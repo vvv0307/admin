@@ -1,0 +1,23 @@
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/admin
+    username: root
+    password:
+    min-poolsize: 1
+    max-poolsize: 10
+    connect-timeout-ms: 3000
+    validate-timeout-ms: 3000
+  redis:
+    password: zht1741105
+    max-total: 100
+    min-idle: 1
+    max-idle: 5
+    max-wait-millis: 2000
+    test-while-idle: true
+    test-on-borrow: true
+    test-on-return: true
+    host: localhost
+    port: 6379
+
+
