@@ -1,11 +1,11 @@
 package com.vvv.zht.service;
 
 import com.vvv.zht.model.StudentDO;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public interface StudentService {
 
     /**
@@ -44,4 +44,19 @@ public interface StudentService {
      * @return
      */
     List<StudentDO> selectStudents(int page,int size);
+
+    /**
+     * 校验account是否存在
+     * @param account
+     * @return
+     */
+    StudentDO selectStudentByAccount(String account);
+
+    /**
+     * 根据账号更改密码
+     * @param account
+     * @param password
+     * @return
+     */
+    int UpdateStudentByAccount(String account,String password);
 }

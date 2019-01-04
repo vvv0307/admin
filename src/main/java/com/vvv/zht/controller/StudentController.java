@@ -1,6 +1,7 @@
 package com.vvv.zht.controller;
 
 
+import com.vvv.zht.Exception.ResponseExceptions.ResponseNotOkExcetpion;
 import com.vvv.zht.model.StudentDO;
 import com.vvv.zht.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.InvalidParameterException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class StudentController {
@@ -62,5 +65,20 @@ public class StudentController {
         List<StudentDO> list = studentService.selectStudents(page,size);
         return ResponseEntity.ok(list);
 
+    }
+
+    @PostMapping("/admin/student/password/update")
+    public ResponseEntity UpdatePasswordByAccount(@RequestParam("account") String account,
+                                                  @RequestParam("password") String password){
+        if(StringUtils.isEmpty(account) || StringUtils.isEmpty(password)){
+            throw new ResponseNotOkExcetpion("参数不能为空");
+        }
+        StudentDO studentDO = studentService.selectStudentByAccount(account);
+        if(studentDO == null){
+            throw new ResponseNotOkExcetpion("账号不存在，请检查后重新输入");
+        }
+        Map map = new HashMap(1);
+        map.put("success",studentService.UpdateStudentByAccount(account,password));
+        return ResponseEntity.ok(map);
     }
 }

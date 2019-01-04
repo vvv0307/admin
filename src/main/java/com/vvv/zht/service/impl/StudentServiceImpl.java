@@ -57,4 +57,14 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentDO> selectStudents(int page,int size) {
         return studentMapper.selectStudent(page,size);
     }
+
+    @Override
+    public StudentDO selectStudentByAccount(String account) {
+        return studentMapper.selectStudentByAccount(account);
+    }
+
+    @Override
+    public int UpdateStudentByAccount(String account, String password) {
+        return studentMapper.updatePasswordByAccount(account,password);
+    }
 }
