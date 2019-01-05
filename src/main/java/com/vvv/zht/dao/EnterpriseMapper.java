@@ -11,7 +11,7 @@ public interface EnterpriseMapper {
 
     @Insert("insert into enterprise_info (enterprise_name,introduction,location,account,password,phone,email,create_time) " +
             "values(#{enterpriseDO.enterpriseName},#{enterpriseDO.introduction},#{enterpriseDO.location},#{enterpriseDO.account}," +
-            "#{enterpriseDO.password},#{enterpriseDO.phone},#{enterpriseDO.email},DATE())")
+            "#{enterpriseDO.password},#{enterpriseDO.phone},#{enterpriseDO.email},NOW())")
     int addEnterprise(@Param("enterpriseDO") EnterpriseDO enterpriseDO);
 
     @Select("select * from enterprise_info where id = #{id}")
@@ -33,5 +33,7 @@ public interface EnterpriseMapper {
                                @Param("password") String password);
 
 
+    @Delete("delete from enterprise_info where id = #{id}")
+    int deleteEnterpriseById(@Param("id") int id);
 
 }

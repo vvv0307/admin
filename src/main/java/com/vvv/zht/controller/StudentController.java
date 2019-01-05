@@ -2,14 +2,23 @@ package com.vvv.zht.controller;
 
 
 import com.vvv.zht.Exception.ResponseExceptions.ResponseNotOkExcetpion;
+import com.vvv.zht.model.PositionDO;
 import com.vvv.zht.model.StudentDO;
+import com.vvv.zht.model.StudentPositionVO;
+import com.vvv.zht.service.PositionService;
+import com.vvv.zht.service.StudentSendService;
 import com.vvv.zht.service.StudentService;
+import org.apache.ibatis.annotations.Delete;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +26,14 @@ import java.util.Map;
 @RestController
 public class StudentController {
 
+    private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
+
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private StudentSendService studentSendService;
+    @Autowired
+    private PositionService positionService;
 
 
     @PostMapping("/admin/student")
@@ -36,8 +51,8 @@ public class StudentController {
     }
 
 
-    @GetMapping("/admin/student/{id:\\d+}")
-    public ResponseEntity SelectStudentById(@PathVariable("id") int id){
+    @GetMapping("/admin/student")
+    public ResponseEntity SelectStudentById(@RequestParam("id") int id){
         StudentDO studentDO = studentService.selectStudentById(id);
         if(studentDO == null){
             throw new InvalidParameterException("id not exist");
@@ -45,8 +60,8 @@ public class StudentController {
         return ResponseEntity.ok(studentDO);
     }
 
-    @GetMapping("admin/student/{name}")
-    public ResponseEntity SelectStudentByName(@PathVariable("name") String name){
+    @GetMapping("admin/student/name")
+    public ResponseEntity SelectStudentByName(@RequestParam("name") String name){
         if(StringUtils.isEmpty(name)){
             throw new InvalidParameterException("parameter can't be empty");
         }
@@ -82,5 +97,30 @@ public class StudentController {
         return ResponseEntity.ok(map);
     }
 
+    @DeleteMapping("/admin/student/delete")
+    public ResponseEntity deleteStudentById(@RequestParam("id") int id){
+        int flag = studentService.deleteStudentById(id);
+        if(flag <= 0){
+            throw new ResponseNotOkExcetpion("delete student fail");
+        }
+        Map map = new HashMap(1);
+        map.put("success",true);
+        return ResponseEntity.ok(map);
+    }
+
+    @GetMapping("/admin/student/positions")
+    public ResponseEntity selectPositionSendByStudentId(@RequestParam("studentId") int studentId){
+        List<Integer> list = studentSendService.selectPositionIdsByStudentId(studentId);
+        logger.info("ids list = {}",list);
+        List<StudentPositionVO> positionlist = new ArrayList<>();
+        for(Integer id: list){
+            PositionDO positionDO = positionService.selectPositionById(id);
+            logger.info("id = {},positionDO = {}",id,positionDO);
+            StudentPositionVO vo = new StudentPositionVO();
+            vo.setPositionDO(positionDO);
+            positionlist.add(vo);
+        }
+        return ResponseEntity.ok(positionlist);
+    }
 
 }

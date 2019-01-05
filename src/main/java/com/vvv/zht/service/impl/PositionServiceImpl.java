@@ -28,4 +28,26 @@ public class PositionServiceImpl implements PositionService {
     public List<PositionDO> selectPositionByEnterpriseId(int id) {
         return positionMapper.selectPositionByEnterpriseId(id);
     }
+
+    @Override
+    public List<PositionDO> selectPositions(int page, int size) {
+        return positionMapper.selectPositions(page,size);
+    }
+
+    @Override
+    public int deletePositionById(int id) {
+        return positionMapper.deletePositionById(id);
+    }
+
+    @Override
+    public int deletePositionsByEnterpriseId(int enterpriseId) {
+        return positionMapper.deletePositionByEnterpriseId(enterpriseId);
+    }
+
+    @Override
+    public List<PositionDO> selectPositionsByStudentId(int id) {
+        return positionMapper.selectPositionsByStudentId(id);
+    }
+
+
 }

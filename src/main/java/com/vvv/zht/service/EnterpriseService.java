@@ -18,4 +18,6 @@ public interface EnterpriseService {
     EnterpriseDO selectEnterpriseByAccount(String account);
 
     int updatePasswordByAccount(String account,String password);
+
+    int deleteEnterpriseById(int id);
 }

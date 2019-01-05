@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.vvv.zht.dao",sqlSessionFactoryRef = "adminSqlSessionFactory")
 public class DataSourceConfig {
 
-    @Value("${spirng.datasource.min-poolsize}")
+    @Value("${spring.datasource.min-poolsize}")
     private int minimumPoolSize;
     @Value("${spring.datasource.max-poolsize}")
     private int maximumPoolSize;

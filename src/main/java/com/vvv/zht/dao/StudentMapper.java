@@ -10,8 +10,8 @@ import java.util.List;
 public interface StudentMapper {
 
     @Insert("insert into student_info(name,age,school,location,work_city,desired_position,skill,major,account,password,phone,create_time) " +
-            "values(#{studentDo.name},#{studentDo.age},#{studentDo.school},#{studentDo.location},#{studentDo.workCity},#{studentDo.desiredPOsition}," +
-            "#{studentDo.skill},#{studentDo.major},#{studentDo.account},#{studentDo.password},#{studentDo.phone},DATE())")
+            "values(#{studentDo.name},#{studentDo.age},#{studentDo.school},#{studentDo.location},#{studentDo.workCity},#{studentDo.desiredPosition}," +
+            "#{studentDo.skill},#{studentDo.major},#{studentDo.account},#{studentDo.password},#{studentDo.phone},NOW())")
     void addStudent(@Param("studentDo") StudentDO studentDo);
 
 
@@ -31,4 +31,7 @@ public interface StudentMapper {
     @Update("update student_info set password = #{password} where account = #{account}")
     int updatePasswordByAccount(@Param("account") String account,
                                 @Param("password") String password);
+
+    @Delete("delete from student_info where id = #{id}")
+    int deleteStudentById(@Param("id") int id);
 }

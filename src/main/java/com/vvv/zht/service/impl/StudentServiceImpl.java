@@ -37,7 +37,6 @@ public class StudentServiceImpl implements StudentService {
         studentDO.setSkill(skill);
         studentDO.setMajor(major);
         studentDO.setPhone(phone);
-
         studentMapper.addStudent(studentDO);
         Map map = new HashMap(2);
         map.put("account",account);
@@ -68,5 +67,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public int UpdateStudentByAccount(String account, String password) {
         return studentMapper.updatePasswordByAccount(account,password);
+    }
+
+    @Override
+    public int deleteStudentById(int id) {
+        return studentMapper.deleteStudentById(id);
     }
 }

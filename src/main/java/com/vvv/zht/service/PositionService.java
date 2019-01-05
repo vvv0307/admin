@@ -14,4 +14,13 @@ public interface PositionService {
     PositionDO selectPositionById(int id);
 
     List<PositionDO> selectPositionByEnterpriseId(int id);
+
+    List<PositionDO> selectPositions(int page,int size);
+
+    int deletePositionById(int id);
+
+    int deletePositionsByEnterpriseId(int enterpriseId);
+
+    List<PositionDO> selectPositionsByStudentId(int id);
+
 }

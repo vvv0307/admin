@@ -59,4 +59,7 @@ public interface StudentService {
      * @return
      */
     int UpdateStudentByAccount(String account,String password);
+
+
+    int deleteStudentById(int id);
 }

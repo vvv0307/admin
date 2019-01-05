@@ -4,10 +4,12 @@ import com.vvv.zht.dao.EnterpriseMapper;
 import com.vvv.zht.model.EnterpriseDO;
 import com.vvv.zht.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class EnterpriseServiceImpl implements EnterpriseService {
 
     @Autowired
@@ -41,5 +43,10 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Override
     public int updatePasswordByAccount(String account,String password) {
         return enterpriseMapper.upatePasswordByAccount(account,password);
+    }
+
+    @Override
+    public int deleteEnterpriseById(int id) {
+        return enterpriseMapper.deleteEnterpriseById(id);
     }
 }
