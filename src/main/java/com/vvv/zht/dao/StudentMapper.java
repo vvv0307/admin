@@ -12,7 +12,7 @@ public interface StudentMapper {
     @Insert("insert into student_info(name,age,school,location,work_city,desired_position,skill,major,account,password,phone,create_time) " +
             "values(#{studentDo.name},#{studentDo.age},#{studentDo.school},#{studentDo.location},#{studentDo.workCity},#{studentDo.desiredPOsition}," +
             "#{studentDo.skill},#{studentDo.major},#{studentDo.account},#{studentDo.password},#{studentDo.phone},DATE())")
-    void addStudent(StudentDO studentDo);
+    void addStudent(@Param("studentDo") StudentDO studentDo);
 
 
     @Select("select * from student_info where id = #{id}")

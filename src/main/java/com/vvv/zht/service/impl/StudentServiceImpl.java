@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired
+    @Resource
     private StudentMapper studentMapper;
 
 
@@ -36,6 +37,7 @@ public class StudentServiceImpl implements StudentService {
         studentDO.setSkill(skill);
         studentDO.setMajor(major);
         studentDO.setPhone(phone);
+
         studentMapper.addStudent(studentDO);
         Map map = new HashMap(2);
         map.put("account",account);

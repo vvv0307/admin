@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Data
 public class StudentDO {
     Integer id;
@@ -31,4 +33,6 @@ public class StudentDO {
     String password;
 
     String phone;
+
+    Date createTime;
 }
