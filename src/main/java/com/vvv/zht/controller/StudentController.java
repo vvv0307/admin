@@ -1,14 +1,13 @@
 package com.vvv.zht.controller;
 
 
-import com.vvv.zht.Exception.ResponseExceptions.ResponseNotOkExcetpion;
+import com.vvv.zht.exception.ResponseExceptions.ResponseNotOkExcetpion;
 import com.vvv.zht.model.PositionDO;
 import com.vvv.zht.model.StudentDO;
 import com.vvv.zht.model.StudentPositionVO;
 import com.vvv.zht.service.PositionService;
 import com.vvv.zht.service.StudentSendService;
 import com.vvv.zht.service.StudentService;
-import org.apache.ibatis.annotations.Delete;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.HashMap;

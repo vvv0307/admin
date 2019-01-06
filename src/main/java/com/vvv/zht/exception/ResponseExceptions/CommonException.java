@@ -1,6 +1,6 @@
-package com.vvv.zht.Exception.ResponseExceptions;
+package com.vvv.zht.exception.ResponseExceptions;
 
-import com.vvv.zht.Exception.BaseException;
+import com.vvv.zht.exception.BaseException;
 import com.vvv.zht.common.ResponseCodeMsg;
 
 public class CommonException extends BaseException {

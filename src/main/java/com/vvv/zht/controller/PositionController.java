@@ -1,11 +1,10 @@
 package com.vvv.zht.controller;
 
 
-import com.vvv.zht.Exception.ResponseExceptions.ResponseNotOkExcetpion;
+import com.vvv.zht.exception.ResponseExceptions.ResponseNotOkExcetpion;
 import com.vvv.zht.model.PositionDO;
 import com.vvv.zht.service.PositionService;
 import com.vvv.zht.service.StudentSendService;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

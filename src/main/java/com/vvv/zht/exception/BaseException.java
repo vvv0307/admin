@@ -1,4 +1,4 @@
-package com.vvv.zht.Exception;
+package com.vvv.zht.exception;
 
 import com.vvv.zht.common.ResponseCodeMsg;
 

@@ -1,7 +1,7 @@
 package com.vvv.zht.controller;
 
 
-import com.vvv.zht.Exception.ResponseExceptions.ResponseNotOkExcetpion;
+import com.vvv.zht.exception.ResponseExceptions.ResponseNotOkExcetpion;
 import com.vvv.zht.model.*;
 import com.vvv.zht.service.EnterpriseService;
 import com.vvv.zht.service.PositionService;
