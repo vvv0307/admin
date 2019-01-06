@@ -1,12 +1,14 @@
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/admin?characterEncoding=utf-8
     username: root
-    password: zht1741105
+    password:
     min-poolsize: 1
     max-poolsize: 10
     connect-timeout-ms: 3000
     validate-timeout-ms: 3000
 
 
-
+server:
+  port: 8070
